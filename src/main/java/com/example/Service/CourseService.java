@@ -21,6 +21,18 @@ public List<Course> getAllCourses() {
 	return courses;
 }
 
+public Course getCourse(Integer id) {
+	// TODO Auto-generated method stub
+   try
+   {
+	return courseRepo.findById(id).get();
+   }
+   catch(Exception e)
+   {
+  	 return null;
+   }
+}
+
 public void addcourse(Course course) {
 	courseRepo.save(course);
 	// TODO Auto-generated method stub
