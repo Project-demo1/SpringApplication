@@ -19,37 +19,37 @@ public class CourseController
 {
 	@Autowired
 	private CourseService courseservice;
-	@RequestMapping("/courses")
+	@RequestMapping("/universities")
 	public List<Course> getAllCourses()
 	{
 		List<Course> course = courseservice.getAllCourses();
 		
 		if(course.size() <= 0)
-			throw new UserNotFoundException("Courses are not available");
+			throw new UserNotFoundException("university are not available, please update first.");
 			
 	  return course;
 	}
-	@GetMapping("/courses/{id}")
+	@GetMapping("/universities/{id}")
 	public Course getCourse(@PathVariable Integer id)
 	{
 		Course course = courseservice.getCourse(id);
 		
 		if(course ==  null)
-			throw new UserNotFoundException("Id is not present");
+			throw new UserNotFoundException("university Id is not present");
 			
 	  return course;
 	}
-	@RequestMapping(method =RequestMethod.POST , value="/courses" )
+	@RequestMapping(method =RequestMethod.POST , value="/universities" )
 	public void addcourse(@RequestBody Course course)
 	{
 		courseservice.addcourse(course);
 	}
-	@RequestMapping(method =RequestMethod.PUT , value="/courses/{id}" )
+	@RequestMapping(method =RequestMethod.PUT , value="/universities/{id}" )
 	public void updatecourse(@PathVariable Integer id ,@RequestBody Course course)
 	{
 		courseservice.updatecourse(id,course);
 	}
-	@RequestMapping(method =RequestMethod.DELETE , value="/courses/{id}" )
+	@RequestMapping(method =RequestMethod.DELETE , value="/universities/{id}" )
 	public void DeleteCourse(@PathVariable Integer id)
 	{
 		courseservice.deletecourse(id);
