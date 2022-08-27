@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  db5:
+    container_name: db5
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=mysql3
+    ports:
+      - 3300:3306
+   
+  app:
+    depends_on:
+      - db5
+    restart: always
+    build: ./
+    ports: 
+      - 8081:8045
+      
+      
+      
+        
+  
